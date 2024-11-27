@@ -7,10 +7,6 @@ internal class Program
 {
     private static void Main(String[] args)
     {
-        foreach (var a in args)
-        {
-            Console.WriteLine(a);
-        }
         Console.WriteLine("Enter the problem identifier (format: d00s0)");
         var s = Console.ReadLine() ?? "";
         s = s.Trim();
@@ -19,8 +15,8 @@ internal class Program
 
         var match = r.Match(s);
 
-        var day = "ERR";
-        var sol = "ERR";
+        String? day = null;
+        String? sol = null;
 
         foreach (Group cap in match.Groups.Cast<Group>())
         {
@@ -33,8 +29,6 @@ internal class Program
                 sol = cap.Value;
             }
         }
-
-        day = day.PadLeft(2, '0');
 
         var className = $"solutions.Day{day}";
         var funcName = $"Solution{sol}";
