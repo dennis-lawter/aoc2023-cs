@@ -78,10 +78,10 @@ namespace solutions
 
             foreach (var line in lines)
             {
-                Console.WriteLine(line);
+                // Console.WriteLine(line);
 
                 var revLine = Day01.ReverseString(line);
-                Console.WriteLine(revLine);
+                // Console.WriteLine(revLine);
                 var leftDigit = 0;
                 var rightDigit = 0;
 
