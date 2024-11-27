@@ -4,7 +4,6 @@ namespace solutions
     {
         public void Solution1(String input)
         {
-            Console.WriteLine("HOLY SHIT");
         }
     }
 }

@@ -5,8 +5,12 @@ using solutions;
 
 internal class Program
 {
-    private static void Main()
+    private static void Main(String[] args)
     {
+        foreach (var a in args)
+        {
+            Console.WriteLine(a);
+        }
         Console.WriteLine("Enter the problem identifier (format: d00s0)");
         var s = Console.ReadLine() ?? "";
         s = s.Trim();
@@ -37,6 +41,15 @@ internal class Program
         Type type = Type.GetType(className) ?? throw new Exception($"Invalid day: {className}");
         var func = type.GetMethod(funcName) ?? throw new Exception($"Invalid solution: {funcName}");
         var obj = Activator.CreateInstance(type);
-        func.Invoke(obj, [""]);
+
+        var filename = $"input/{day}.txt";
+        if (args.Length > 0 && args[0] == "-e")
+        {
+            filename = $"example/{day}.txt";
+        }
+
+        var inputStr = File.ReadAllText(filename);
+
+        func.Invoke(obj, [inputStr]);
     }
 }
